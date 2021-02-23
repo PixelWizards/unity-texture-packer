@@ -6,39 +6,40 @@ unity-texture-packer [![License](https://img.shields.io/badge/License-MIT-lightg
 
 ![screenshot](Screenshots/screen00.gif)
 
-### Example in code :floppy_disk:
+## Install
 
-```cs
-TextureInput texInput00 = new TextureInput();
-TextureInput texInput01 = new TextureInput();
+### Using Git
 
-texInput00.texture = Resources.Load<Texture2D>("input00");
-texInput01.texture = Resources.Load<Texture2D>("input01");
+Make sure the Git client is installed on your marchine and that you have added the Git executable path to your PATH environment variable.
 
-var texChanInRed = new TextureChannelInput(TextureChannel.ChannelRed, true);
-var texChanInBlue = new TextureChannelInput(TextureChannel.ChannelBlue, true);
+Go in %ProjectFolder%/Packages/ and open the "manifest.json" file.
 
-// Input Red into Output Red
-texInput00.SetChannelInput(TextureChannel.ChannelRed, texChanInRed);
-// Input Green into Output Blue
-texInput00.SetChannelInput(TextureChannel.ChannelGreen, texChanInBlue);
+in the "dependencies" section add:
 
-// Input Green into Output Green
-var texChanInGreen =  new TextureChannelInput(TextureChannel.ChannelGreen, true);
-texInput01.SetChannelInput(TextureChannel.ChannelGreen, texChanInGreen);
-
-TexturePacker texPacker = new TexturePacker();
-
-texPacker.Add(texInput00);
-texPacker.Add(texInput01);
-
-Texture2D texMerged = texPacker.Create();
+```sh
+{
+  "dependencies": {
+      ...
+      "ca.andydbc.unity-texture-packer":"https://github.com/andydbc/unity-texture-packer.git#0.1.0"
+      ...
+  }
+}
 ```
 
-### Note
+Find more information about this [here](https://docs.unity3d.com/Manual/upm-git.html).
+
+### Manual 
+
+Dowload this repository as a zip file, extract the archive. <br>
+In Unity, go in "Window" -> "Package Manager"  -> "Add Package from disk"<br>
+Select the "package.json" file located at the root of the package folder.<br>
+
+The tool is located under "Window" and is called "Channel Packer"
+
+## Note
 
 This is still under development and may be buggy.
 
-### License :pencil:
+## License
 
 MIT. See [LICENSE](https://github.com/andydbc/unity-texture-packer/blob/master/LICENSE) for details.
